@@ -1,0 +1,196 @@
+<!-- BRS SIIGNS PREMIUM STATS BAR - BLOGGER GADGET VERSION -->
+<div id="brs-stats-scope" class="brs-stats-wrapper">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
+
+    .brs-stats-wrapper {
+      --bg-gradient: linear-gradient(135deg, #060f24 0%, #0a1a35 100%);
+      --text-dim: #8aadcc;
+      font-family: 'Inter', sans-serif;
+      margin: 40px auto;
+      max-width: 1200px;
+      width: 100%;
+      background: var(--bg-gradient);
+      border-radius: 24px;
+      padding: 40px 20px;
+      box-shadow: 0 20px 50px rgba(0, 212, 255, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.03);
+      box-sizing: border-box;
+    }
+
+    .brs-stats-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .brs-stat-card {
+      flex: 1;
+      min-width: 200px;
+      text-align: center;
+      padding: 20px;
+      text-decoration: none;
+      border-radius: 16px;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+      overflow: hidden;
+      border: 1px solid transparent;
+    }
+
+    .brs-stat-card:hover {
+      background: rgba(255, 255, 255, 0.03);
+      border-color: rgba(255, 255, 255, 0.08);
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .brs-stat-card::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+      transition: 0.5s;
+    }
+
+    .brs-stat-card:hover::after {
+      left: 100%;
+    }
+
+    .brs-stat-number {
+      font-size: 3.5rem;
+      font-weight: 900;
+      line-height: 1;
+      margin-bottom: 10px;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+
+    .brs-stat-card:hover .brs-stat-number {
+      transform: scale(1.1);
+    }
+
+    .brs-stat-line {
+      width: 40px;
+      height: 3px;
+      margin: 12px auto;
+      border-radius: 10px;
+    }
+
+    .brs-stat-label {
+      color: var(--text-dim);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      margin: 0;
+      display: block;
+      transition: color 0.3s ease;
+    }
+
+    .brs-stat-card:hover .brs-stat-label {
+      color: white;
+    }
+
+    /* Colors */
+    .stat-red { color: #ff2d55; text-shadow: 0 0 25px rgba(255, 45, 85, 0.5); }
+    .stat-red-bg { background: #ff2d55; box-shadow: 0 0 10px #ff2d55; }
+    
+    .stat-blue { color: #00d4ff; text-shadow: 0 0 25px rgba(0, 212, 255, 0.5); }
+    .stat-blue-bg { background: #00d4ff; box-shadow: 0 0 10px #00d4ff; }
+    
+    .stat-gold { color: #f5c842; text-shadow: 0 0 25px rgba(245, 200, 66, 0.5); }
+    .stat-gold-bg { background: #f5c842; box-shadow: 0 0 10px #f5c842; }
+    
+    .stat-green { color: #00ff88; text-shadow: 0 0 25px rgba(0, 255, 136, 0.5); }
+    .stat-green-bg { background: #00ff88; box-shadow: 0 0 10px #00ff88; }
+
+    @media (max-width: 768px) {
+      .brs-stat-number { font-size: 2.5rem; }
+      .brs-stat-card { min-width: 140px; padding: 15px 10px; }
+    }
+  </style>
+
+  <div class="brs-stats-grid" id="brs-stats-grid">
+    
+    <!-- Years Experience -->
+    <a href="https://brssiigns.blogspot.com/" class="brs-stat-card">
+      <span class="brs-stat-number stat-red" id="brs-stat-1">0</span>
+      <div class="brs-stat-line stat-red-bg"></div>
+      <span class="brs-stat-label">Years Experience</span>
+    </a>
+
+    <!-- Projects Completed -->
+    <a href="https://brssiigns.blogspot.com/2026/04/the-benefits-of-3d-metal-letters-trichy.html" class="brs-stat-card">
+      <span class="brs-stat-number stat-blue" id="brs-stat-2">0</span>
+      <div class="brs-stat-line stat-blue-bg"></div>
+      <span class="brs-stat-label">Projects Completed</span>
+    </a>
+
+    <!-- Installations -->
+    <a href="https://brssiigns.blogspot.com/2026/04/how-led-sign-boards-trichy-can.html" class="brs-stat-card">
+      <span class="brs-stat-number stat-gold" id="brs-stat-3">0</span>
+      <div class="brs-stat-line stat-gold-bg"></div>
+      <span class="brs-stat-label">Installations</span>
+    </a>
+
+    <!-- In-House Services -->
+    <a href="https://brssiigns.blogspot.com/2026/04/led-neon-signs-trichy-2026-best-designs.html" class="brs-stat-card">
+      <span class="brs-stat-number stat-green" id="brs-stat-4">0</span>
+      <div class="brs-stat-line stat-green-bg"></div>
+      <span class="brs-stat-label">In-House Services</span>
+    </a>
+
+  </div>
+
+  <script>
+    (function() {
+      if (window._brsStatsInit) return;
+      window._brsStatsInit = true;
+
+      function animateValue(id, start, end, duration, suffix) {
+        var obj = document.getElementById(id);
+        if (!obj) return;
+        var range = end - start;
+        var current = start;
+        var increment = end > start ? Math.ceil(range / (duration / 16)) : -1;
+        var stepTime = 16;
+        var timer = setInterval(function() {
+          current += increment;
+          if ((increment > 0 && current >= end) || (increment < 0 && current <= end)) {
+            obj.innerHTML = end + suffix;
+            clearInterval(timer);
+          } else {
+            obj.innerHTML = current + suffix;
+          }
+        }, stepTime);
+      }
+
+      function startAnimations() {
+        animateValue("brs-stat-1", 0, 15, 2000, "+");
+        animateValue("brs-stat-2", 0, 5000, 2000, "+");
+        animateValue("brs-stat-3", 0, 1600, 2000, "+");
+        animateValue("brs-stat-4", 0, 7, 2000, "+");
+      }
+
+      var observerOptions = {
+        threshold: 0.2
+      };
+
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            startAnimations();
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      var target = document.getElementById('brs-stats-scope');
+      if (target) observer.observe(target);
+    })();
+  </script>
+</div>

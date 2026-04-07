@@ -1,0 +1,190 @@
+<!-- BRS SIIGNS MODERN STATS BAR - BLOGGER GADGET VERSION -->
+<div id="brs-stats-container" class="brs-stats-scope">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
+
+    .brs-stats-scope {
+      --bg-dark: #060f24;
+      --bg-light: #0a1a35;
+      --text-dim: #8aadcc;
+      --red: #ff2d55;
+      --blue: #00d4ff;
+      --gold: #f5c842;
+      --green: #00ff88;
+      
+      font-family: 'Inter', sans-serif;
+      margin: 30px auto;
+      max-width: 1200px;
+      width: 100%;
+      background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-light) 100%);
+      border-radius: 24px;
+      padding: 40px;
+      box-shadow: 0 0 40px rgba(0, 212, 255, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+      box-sizing: border-box;
+      color: white;
+    }
+
+    .brs-stats-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0;
+    }
+
+    .brs-stat-card {
+      flex: 1;
+      min-width: 150px;
+      text-align: center;
+      padding: 10px 20px;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      border-right: 1px solid rgba(255, 255, 255, 0.08);
+      position: relative;
+    }
+
+    .brs-stat-card:last-child {
+      border-right: none;
+    }
+
+    .brs-stat-card:hover {
+      background: rgba(255, 255, 255, 0.03);
+      transform: translateY(-5px);
+    }
+
+    .brs-stat-number {
+      font-size: 3.5rem;
+      font-weight: 900;
+      line-height: 1;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .brs-stat-line {
+      width: 30px;
+      height: 3px;
+      margin: 10px auto 12px;
+      border-radius: 10px;
+      transition: width 0.3s ease;
+    }
+
+    .brs-stat-card:hover .brs-stat-line {
+      width: 60px;
+    }
+
+    .brs-stat-label {
+      color: var(--text-dim);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      margin: 0;
+      display: block;
+      transition: color 0.3s ease;
+    }
+
+    .brs-stat-card:hover .brs-stat-label {
+      color: white;
+    }
+
+    /* Color Variations */
+    .stat-red { color: var(--red); text-shadow: 0 0 25px rgba(255, 45, 85, 0.6); }
+    .stat-red-bg { background: var(--red); box-shadow: 0 0 12px var(--red); }
+    
+    .stat-blue { color: var(--blue); text-shadow: 0 0 25px rgba(0, 212, 255, 0.6); }
+    .stat-blue-bg { background: var(--blue); box-shadow: 0 0 12px var(--blue); }
+    
+    .stat-gold { color: var(--gold); text-shadow: 0 0 25px rgba(245, 200, 66, 0.6); }
+    .stat-gold-bg { background: var(--gold); box-shadow: 0 0 12px var(--gold); }
+    
+    .stat-green { color: var(--green); text-shadow: 0 0 25px rgba(0, 255, 136, 0.6); }
+    .stat-green-bg { background: var(--green); box-shadow: 0 0 12px var(--green); }
+
+    @media (max-width: 768px) {
+      .brs-stats-scope { padding: 30px 20px; }
+      .brs-stat-card { border-right: none; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding: 25px 10px; }
+      .brs-stat-card:last-child { border-bottom: none; }
+      .brs-stat-number { font-size: 2.8rem; }
+    }
+  </style>
+
+  <div class="brs-stats-grid">
+    
+    <!-- Years Experience -->
+    <a href="https://brssiigns.blogspot.com/" class="brs-stat-card">
+      <span class="brs-stat-number stat-red" id="modern-stat-1">0</span>
+      <div class="brs-stat-line stat-red-bg"></div>
+      <span class="brs-stat-label">Years Experience</span>
+    </a>
+
+    <!-- Projects Completed -->
+    <a href="https://brssiigns.blogspot.com/2026/04/the-durability-and-elegance-of-3d-metal.html" class="brs-stat-card">
+      <span class="brs-stat-number stat-blue" id="modern-stat-2">0</span>
+      <div class="brs-stat-line stat-blue-bg"></div>
+      <span class="brs-stat-label">Projects Completed</span>
+    </a>
+
+    <!-- Installations -->
+    <a href="https://brssiigns.blogspot.com/2026/04/how-led-sign-boards-trichy-can.html" class="brs-stat-card">
+      <span class="brs-stat-number stat-gold" id="modern-stat-3">0</span>
+      <div class="brs-stat-line stat-gold-bg"></div>
+      <span class="brs-stat-label">Installations</span>
+    </a>
+
+    <!-- In-House Services -->
+    <a href="https://brssiigns.blogspot.com/2026/04/led-neon-signs-trichy-2026-best-designs.html" class="brs-stat-card">
+      <span class="brs-stat-number stat-green" id="modern-stat-4">0</span>
+      <div class="brs-stat-line stat-green-bg"></div>
+      <span class="brs-stat-label">In-House Services</span>
+    </a>
+
+  </div>
+
+  <script>
+    (function() {
+      if (window._brsModernStatsInit) return;
+      window._brsModernStatsInit = true;
+
+      function animateCounter(id, target, suffix) {
+        suffix = suffix || "";
+        var el = document.getElementById(id);
+        if (!el) return;
+        var count = 0;
+        var increment = Math.ceil(target / 60);
+        var timer = setInterval(function() {
+          count += increment;
+          if (count >= target) {
+            count = target;
+            clearInterval(timer);
+          }
+          el.textContent = count + suffix;
+        }, 22);
+      }
+
+      function tryObserve() {
+        var bar = document.getElementById("brs-stats-container");
+        if (!bar) return;
+
+        var observer = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              animateCounter("modern-stat-1", 30, "+");
+              animateCounter("modern-stat-2", 10000, "+");
+              animateCounter("modern-stat-3", 6000, "+");
+              animateCounter("modern-stat-4", 7, "+");
+              observer.disconnect();
+            }
+          });
+        }, { threshold: 0.2 });
+
+        observer.observe(bar);
+      }
+
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", tryObserve);
+      } else {
+        tryObserve();
+      }
+    })();
+  </script>
+</div>

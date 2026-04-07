@@ -1,0 +1,178 @@
+<!-- BRS SIIGNS PREMIUM STATS BAR V2 - BLOGGER GADGET VERSION -->
+<div id="brs-stats-scope-v2" class="brs-stats-wrapper">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
+
+    .brs-stats-wrapper {
+      --bg-gradient: linear-gradient(135deg, #060f24 0%, #0a1a35 100%);
+      --text-dim: #8aadcc;
+      font-family: 'Inter', sans-serif;
+      margin: 40px auto;
+      max-width: 1200px;
+      width: 100%;
+      background: var(--bg-gradient);
+      border-radius: 24px;
+      padding: 40px 20px;
+      box-shadow: 0 20px 50px rgba(0, 212, 255, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.03);
+      box-sizing: border-box;
+    }
+
+    .brs-stats-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0;
+    }
+
+    .brs-stat-item {
+      flex: 1;
+      min-width: 200px;
+      text-align: center;
+      padding: 20px 40px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      position: relative;
+      border-right: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .brs-stat-item:last-child {
+      border-right: none;
+    }
+
+    .brs-stat-item:hover {
+      background: rgba(255, 255, 255, 0.02);
+      transform: translateY(-5px);
+    }
+
+    .brs-stat-number {
+      font-size: 3.5rem;
+      font-weight: 900;
+      line-height: 1;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .brs-stat-line {
+      width: 30px;
+      height: 2px;
+      margin: 10px auto 8px;
+      border-radius: 2px;
+    }
+
+    .brs-stat-label {
+      color: var(--text-dim);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      margin: 0;
+      display: block;
+      transition: color 0.3s ease;
+    }
+
+    .brs-stat-item:hover .brs-stat-label {
+      color: white;
+      text-decoration: underline;
+    }
+
+    /* Colors */
+    .stat-red { color: #ff2d55; text-shadow: 0 0 25px rgba(255, 45, 85, 0.7); }
+    .stat-red-bg { background: #ff2d55; box-shadow: 0 0 8px #ff2d55; }
+    
+    .stat-blue { color: #00d4ff; text-shadow: 0 0 25px rgba(0, 212, 255, 0.7); }
+    .stat-blue-bg { background: #00d4ff; box-shadow: 0 0 8px #00d4ff; }
+    
+    .stat-gold { color: #f5c842; text-shadow: 0 0 25px rgba(245, 200, 66, 0.7); }
+    .stat-gold-bg { background: #f5c842; box-shadow: 0 0 8px #f5c842; }
+    
+    .stat-green { color: #00ff88; text-shadow: 0 0 25px rgba(0, 255, 136, 0.7); }
+    .stat-green-bg { background: #00ff88; box-shadow: 0 0 8px #00ff88; }
+
+    @media (max-width: 768px) {
+      .brs-stat-item { border-right: none; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding: 30px 20px; }
+      .brs-stat-item:last-child { border-bottom: none; }
+      .brs-stat-number { font-size: 2.8rem; }
+    }
+  </style>
+
+  <div class="brs-stats-grid" id="brs-stats-grid-v2">
+    
+    <!-- Years Experience -->
+    <a href="https://brssiigns.blogspot.com/" class="brs-stat-item">
+      <span class="brs-stat-number stat-red" id="brs-stat-v2-1">0</span>
+      <div class="brs-stat-line stat-red-bg"></div>
+      <span class="brs-stat-label">Years Experience</span>
+    </a>
+
+    <!-- Projects Completed -->
+    <a href="https://brssiigns.blogspot.com/2026/04/the-durability-and-elegance-of-3d-metal.html" class="brs-stat-item">
+      <span class="brs-stat-number stat-blue" id="brs-stat-v2-2">0</span>
+      <div class="brs-stat-line stat-blue-bg"></div>
+      <span class="brs-stat-label">Projects Completed</span>
+    </a>
+
+    <!-- Installations -->
+    <a href="https://brssiigns.blogspot.com/2026/04/how-led-sign-boards-trichy-can.html" class="brs-stat-item">
+      <span class="brs-stat-number stat-gold" id="brs-stat-v2-3">0</span>
+      <div class="brs-stat-line stat-gold-bg"></div>
+      <span class="brs-stat-label">Installations</span>
+    </a>
+
+    <!-- In-House Services -->
+    <a href="https://brssiigns.blogspot.com/2026/04/led-neon-signs-trichy-2026-best-designs.html" class="brs-stat-item">
+      <span class="brs-stat-number stat-green" id="brs-stat-v2-4">0</span>
+      <div class="brs-stat-line stat-green-bg"></div>
+      <span class="brs-stat-label">In-House Services</span>
+    </a>
+
+  </div>
+
+  <script>
+    (function() {
+      if (window._brsStatsInitV2) return;
+      window._brsStatsInitV2 = true;
+
+      function animateCounter(id, target, suffix) {
+        suffix = suffix || "";
+        var el = document.getElementById(id);
+        if (!el) return;
+        var count = 0;
+        var increment = Math.ceil(target / 60);
+        var timer = setInterval(function() {
+          count += increment;
+          if (count >= target) {
+            count = target;
+            clearInterval(timer);
+          }
+          el.textContent = count + suffix;
+        }, 22);
+      }
+
+      function tryObserve() {
+        var bar = document.getElementById("brs-stats-scope-v2");
+        if (!bar) return;
+
+        var observer = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              animateCounter("brs-stat-v2-1", 15, "+");
+              animateCounter("brs-stat-v2-2", 5000, "+");
+              animateCounter("brs-stat-v2-3", 1600, "+");
+              animateCounter("brs-stat-v2-4", 7, "+");
+              observer.disconnect();
+            }
+          });
+        }, { threshold: 0.2 });
+
+        observer.observe(bar);
+      }
+
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", tryObserve);
+      } else {
+        tryObserve();
+      }
+    })();
+  </script>
+</div>

@@ -1,0 +1,389 @@
+<!-- BRS SIIGNS PREMIUM HERO SLIDER - BLOGGER GADGET VERSION -->
+<div id="brs-slider-container" class="brs-slider-scope">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+    .brs-slider-scope {
+      --bg-dark: #030a1a;
+      --text-dim: #8aadcc;
+      --whatsapp: #25d366;
+      --email: #00d4ff;
+      font-family: 'Inter', sans-serif;
+      margin: 20px auto;
+      max-width: 1200px;
+      width: 100%;
+      position: relative;
+      overflow: hidden;
+      border-radius: 24px;
+      background: var(--bg-dark);
+      box-shadow: 0 0 50px rgba(0, 212, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      color: white;
+    }
+
+    .brs-slider-track {
+      display: flex;
+      transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+      width: 700%; /* 7 slides */
+    }
+
+    .brs-slide {
+      width: 14.2857%;
+      display: flex;
+      align-items: center;
+      padding: 40px;
+      gap: 40px;
+      min-height: 450px;
+      box-sizing: border-box;
+    }
+
+    .brs-content {
+      flex: 1;
+      z-index: 2;
+    }
+
+    .brs-badge {
+      display: inline-block;
+      padding: 6px 16px;
+      border-radius: 100px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      margin-bottom: 20px;
+      border: 1px solid;
+    }
+
+    .brs-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+
+    .brs-desc {
+      color: var(--text-dim);
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 32px;
+      max-width: 500px;
+    }
+
+    .brs-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .brs-btn {
+      padding: 12px 24px;
+      border-radius: 100px;
+      font-weight: 700;
+      font-size: 14px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.3s ease;
+      color: white;
+    }
+
+    .brs-btn:hover {
+      transform: translateY(-3px);
+    }
+
+    .brs-btn-wa { background: var(--whatsapp); }
+    .brs-btn-wa:hover { box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3); }
+
+    .brs-btn-email { background: var(--email); color: #030a1a; }
+    .brs-btn-email:hover { box-shadow: 0 10px 20px rgba(0, 212, 255, 0.3); }
+
+    .brs-readmore {
+      font-weight: 700;
+      font-size: 14px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: opacity 0.2s;
+    }
+
+    .brs-readmore:hover { opacity: 0.7; }
+
+    .brs-image-wrap {
+      flex: 1;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .brs-img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      position: relative;
+      z-index: 2;
+      box-sizing: border-box;
+      transition: all 0.5s ease;
+    }
+
+    /* Frame Styles */
+    .frame-neon { border: 12px solid #000; border-radius: 40px; box-shadow: 0 0 40px rgba(255,45,85,0.4); }
+    .frame-metal { border: 8px solid #334155; border-radius: 8px; box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
+    .frame-acrylic { border: 4px solid rgba(255,255,255,0.2); border-radius: 24px; backdrop-filter: blur(10px); }
+    .frame-led { border: 16px solid #1a1a1a; border-radius: 2px; box-shadow: 0 20px 40px rgba(0,0,0,0.6); }
+    .frame-modular { border: 10px solid #cbd5e1; border-radius: 12px; }
+    .frame-vinyl { border: 20px solid #1e293b; border-radius: 0; }
+    .frame-memento { border: 14px solid #4c1d95; border-radius: 8px; box-shadow: 0 0 30px rgba(168,85,247,0.3); }
+
+    .brs-glow {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      filter: blur(60px);
+      opacity: 0.3;
+      border-radius: 50%;
+      z-index: 1;
+    }
+
+    /* Nav Arrows */
+    .brs-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,0.4);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: white;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      cursor: pointer;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+    }
+
+    .brs-nav:hover { background: rgba(255,255,255,0.1); }
+    .brs-prev { left: 20px; }
+    .brs-next { right: 20px; }
+
+    /* Dots */
+    .brs-dots {
+      position: absolute;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 8px;
+      z-index: 10;
+    }
+
+    .brs-dot {
+      height: 6px;
+      width: 6px;
+      border-radius: 100px;
+      background: rgba(255,255,255,0.2);
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      padding: 0;
+    }
+
+    .brs-dot.active {
+      width: 24px;
+      background: var(--email);
+    }
+
+    @media (max-width: 768px) {
+      .brs-slide { flex-direction: column; padding: 30px 20px 60px; text-align: center; }
+      .brs-image-wrap { display: none; }
+      .brs-title { font-size: 1.8rem; }
+      .brs-actions { justify-content: center; }
+      .brs-nav { width: 36px; height: 36px; }
+    }
+  </style>
+
+  <div class="brs-slider-track" id="brsTrack">
+    <!-- Slide 1 -->
+    <div class="brs-slide">
+      <div class="brs-content">
+        <div class="brs-badge" style="color: #ff2d55; background: rgba(255,45,85,0.1); border-color: rgba(255,45,85,0.3);">LED & NEON SIGNS</div>
+        <h2 class="brs-title" style="color: #ff2d55; text-shadow: 0 0 20px rgba(255,45,85,0.4);">What if your sign never went dark again?</h2>
+        <p class="brs-desc">IP65 weatherproof LED & Neon signs that glow brightly even during TNEB power cuts.</p>
+        <div class="brs-actions">
+          <a href="https://wa.link/a8cb8a" class="brs-btn brs-btn-wa">💬 Bennir Raja</a>
+          <a href="https://wa.link/4gbxl4" class="brs-btn brs-btn-wa">💬 Johni Beski</a>
+          <a href="mailto:brssiigns.try@gmail.com" class="brs-btn brs-btn-email">✉ Email Us</a>
+          <a href="https://brssiigns.blogspot.com/2026/04/led-neon-signs-trichy-2026-best-designs.html" class="brs-readmore" style="color: #ff2d55;">Read More →</a>
+        </div>
+      </div>
+      <div class="brs-image-wrap">
+        <div class="brs-glow" style="background: #ff2d55;"></div>
+        <img src="https://images.unsplash.com/photo-1563245332-692546984721?q=80&w=600&auto=format&fit=crop" class="brs-img frame-neon" alt="LED Signs">
+      </div>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="brs-slide">
+      <div class="brs-content">
+        <div class="brs-badge" style="color: #00d4ff; background: rgba(0,212,255,0.1); border-color: rgba(0,212,255,0.3);">3D METAL LETTERS</div>
+        <h2 class="brs-title" style="color: #00d4ff; text-shadow: 0 0 20px rgba(0,212,255,0.4);">Want a sign that still looks premium in 15 years?</h2>
+        <p class="brs-desc">3D Stainless Steel Metal Letters that never rust, never fade. Zero maintenance forever.</p>
+        <div class="brs-actions">
+          <a href="https://wa.link/a8cb8a" class="brs-btn brs-btn-wa">💬 Bennir Raja</a>
+          <a href="https://wa.link/4gbxl4" class="brs-btn brs-btn-wa">💬 Johni Beski</a>
+          <a href="mailto:brssiigns.try@gmail.com" class="brs-btn brs-btn-email">✉ Email Us</a>
+          <a href="https://brssiigns.blogspot.com/2026/04/the-future-of-3d-metal-letters-trichy.html" class="brs-readmore" style="color: #00d4ff;">Read More →</a>
+        </div>
+      </div>
+      <div class="brs-image-wrap">
+        <div class="brs-glow" style="background: #00d4ff;"></div>
+        <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?q=80&w=600&auto=format&fit=crop" class="brs-img frame-metal" alt="3D Metal">
+      </div>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="brs-slide">
+      <div class="brs-content">
+        <div class="brs-badge" style="color: #00d4ff; background: rgba(0,212,255,0.1); border-color: rgba(0,212,255,0.3);">ACRYLIC EDGE LIT</div>
+        <h2 class="brs-title" style="color: #00d4ff; text-shadow: 0 0 20px rgba(0,212,255,0.4);">The sign that looks like pure magic at night?</h2>
+        <p class="brs-desc">Elegant Acrylic Edge Lit signs with soft, even glow. Modern, slim and stunning.</p>
+        <div class="brs-actions">
+          <a href="https://wa.link/a8cb8a" class="brs-btn brs-btn-wa">💬 Bennir Raja</a>
+          <a href="https://wa.link/4gbxl4" class="brs-btn brs-btn-wa">💬 Johni Beski</a>
+          <a href="mailto:brssiigns.try@gmail.com" class="brs-btn brs-btn-email">✉ Email Us</a>
+          <a href="https://brssiigns.blogspot.com/2026/04/modern-acrylic-edge-lit-signs-trichy.html" class="brs-readmore" style="color: #00d4ff;">Read More →</a>
+        </div>
+      </div>
+      <div class="brs-image-wrap">
+        <div class="brs-glow" style="background: #00d4ff;"></div>
+        <img src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=600&auto=format&fit=crop" class="brs-img frame-acrylic" alt="Acrylic Edge Lit">
+      </div>
+    </div>
+
+    <!-- Slide 4 -->
+    <div class="brs-slide">
+      <div class="brs-content">
+        <div class="brs-badge" style="color: #f5c842; background: rgba(245,200,66,0.1); border-color: rgba(245,200,66,0.3);">LED RUNNING DISPLAY</div>
+        <h2 class="brs-title" style="color: #f5c842; text-shadow: 0 0 20px rgba(245,200,66,0.4);">Change your offer in just 10 seconds?</h2>
+        <p class="brs-desc">LED Running Display — update messages instantly from your phone. Tamil & English supported.</p>
+        <div class="brs-actions">
+          <a href="https://wa.link/a8cb8a" class="brs-btn brs-btn-wa">💬 Bennir Raja</a>
+          <a href="https://wa.link/4gbxl4" class="brs-btn brs-btn-wa">💬 Johni Beski</a>
+          <a href="mailto:brssiigns.try@gmail.com" class="brs-btn brs-btn-email">✉ Email Us</a>
+          <a href="https://brssiigns.blogspot.com/2026/04/how-led-sign-boards-trichy-can.html" class="brs-readmore" style="color: #f5c842;">Read More →</a>
+        </div>
+      </div>
+      <div class="brs-image-wrap">
+        <div class="brs-glow" style="background: #f5c842;"></div>
+        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=600&auto=format&fit=crop" class="brs-img frame-led" alt="LED Running">
+      </div>
+    </div>
+
+    <!-- Slide 5 -->
+    <div class="brs-slide">
+      <div class="brs-content">
+        <div class="brs-badge" style="color: #00ff88; background: rgba(0,255,136,0.1); border-color: rgba(0,255,136,0.3);">MODULAR SYSTEMS</div>
+        <h2 class="brs-title" style="color: #00ff88; text-shadow: 0 0 20px rgba(0,255,136,0.4);">One frame. Unlimited events?</h2>
+        <p class="brs-desc">Modular Systems — build once, reuse forever. No carpenter. No tools needed.</p>
+        <div class="brs-actions">
+          <a href="https://wa.link/a8cb8a" class="brs-btn brs-btn-wa">💬 Bennir Raja</a>
+          <a href="https://wa.link/4gbxl4" class="brs-btn brs-btn-wa">💬 Johni Beski</a>
+          <a href="mailto:brssiigns.try@gmail.com" class="brs-btn brs-btn-email">✉ Email Us</a>
+          <a href="https://brssiigns.blogspot.com/" class="brs-readmore" style="color: #00ff88;">Read More →</a>
+        </div>
+      </div>
+      <div class="brs-image-wrap">
+        <div class="brs-glow" style="background: #00ff88;"></div>
+        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=600&auto=format&fit=crop" class="brs-img frame-modular" alt="Modular">
+      </div>
+    </div>
+
+    <!-- Slide 6 -->
+    <div class="brs-slide">
+      <div class="brs-content">
+        <div class="brs-badge" style="color: #ff6b35; background: rgba(255,107,53,0.1); border-color: rgba(255,107,53,0.3);">VINYL & FLEX SHIELD</div>
+        <h2 class="brs-title" style="color: #ff6b35; text-shadow: 0 0 20px rgba(255,107,53,0.4);">Tired of banners fading in just 3 months?</h2>
+        <p class="brs-desc">Vinyl & Flex with Shield protection — 3x longer life in Tamil Nadu sun and rain.</p>
+        <div class="brs-actions">
+          <a href="https://wa.link/a8cb8a" class="brs-btn brs-btn-wa">💬 Bennir Raja</a>
+          <a href="https://wa.link/4gbxl4" class="brs-btn brs-btn-wa">💬 Johni Beski</a>
+          <a href="mailto:brssiigns.try@gmail.com" class="brs-btn brs-btn-email">✉ Email Us</a>
+          <a href="https://brssiigns.blogspot.com/2026/04/how-to-choose-weather-proof-vinyl-flex.html" class="brs-readmore" style="color: #ff6b35;">Read More →</a>
+        </div>
+      </div>
+      <div class="brs-image-wrap">
+        <div class="brs-glow" style="background: #ff6b35;"></div>
+        <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=600&auto=format&fit=crop" class="brs-img frame-vinyl" alt="Vinyl Flex">
+      </div>
+    </div>
+
+    <!-- Slide 7 -->
+    <div class="brs-slide">
+      <div class="brs-content">
+        <div class="brs-badge" style="color: #a855f7; background: rgba(168,85,247,0.1); border-color: rgba(168,85,247,0.3);">CUSTOM MEMENTOS</div>
+        <h2 class="brs-title" style="color: #a855f7; text-shadow: 0 0 20px rgba(168,85,247,0.4);">The one thing they keep forever?</h2>
+        <p class="brs-desc">Premium Custom Mementos & Trophies with velvet gift box. Perfect for schools, corporates & temples.</p>
+        <div class="brs-actions">
+          <a href="https://wa.link/a8cb8a" class="brs-btn brs-btn-wa">💬 Bennir Raja</a>
+          <a href="https://wa.link/4gbxl4" class="brs-btn brs-btn-wa">💬 Johni Beski</a>
+          <a href="mailto:brssiigns.try@gmail.com" class="brs-btn brs-btn-email">✉ Email Us</a>
+          <a href="https://brssiigns.blogspot.com/" class="brs-readmore" style="color: #a855f7;">Read More →</a>
+        </div>
+      </div>
+      <div class="brs-image-wrap">
+        <div class="brs-glow" style="background: #a855f7;"></div>
+        <img src="https://images.unsplash.com/photo-1579546673173-c3ff1c876d56?q=80&w=600&auto=format&fit=crop" class="brs-img frame-memento" alt="Mementos">
+      </div>
+    </div>
+  </div>
+
+  <!-- Nav -->
+  <button class="brs-nav brs-prev" onclick="brsPrev()">&#10094;</button>
+  <button class="brs-nav brs-next" onclick="brsNext()">&#10095;</button>
+
+  <!-- Dots -->
+  <div class="brs-dots" id="brsDots"></div>
+
+  <script>
+    (function() {
+      var current = 0;
+      var total = 7;
+      var track = document.getElementById('brsTrack');
+      var dotsContainer = document.getElementById('brsDots');
+      var timer = null;
+
+      // Create dots
+      for (var i = 0; i < total; i++) {
+        var dot = document.createElement('button');
+        dot.className = 'brs-dot' + (i === 0 ? ' active' : '');
+        dot.onclick = (function(index) {
+          return function() { goTo(index); resetTimer(); };
+        })(i);
+        dotsContainer.appendChild(dot);
+      }
+
+      function goTo(n) {
+        current = (n + total) % total;
+        track.style.transform = 'translateX(-' + (current * 14.2857) + '%)';
+        var dots = dotsContainer.querySelectorAll('.brs-dot');
+        dots.forEach(function(d, idx) {
+          d.className = 'brs-dot' + (idx === current ? ' active' : '');
+        });
+      }
+
+      window.brsNext = function() { goTo(current + 1); resetTimer(); };
+      window.brsPrev = function() { goTo(current - 1); resetTimer(); };
+
+      function resetTimer() {
+        clearInterval(timer);
+        timer = setInterval(function() { goTo(current + 1); }, 6000);
+      }
+
+      resetTimer();
+    })();
+  </script>
+</div>
